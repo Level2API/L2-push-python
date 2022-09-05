@@ -1,0 +1,37 @@
+1 安装Python需要的模块
+
+1.1 Windows系统的先打开CMD命令安装gRPC模块和ProtoBuf的依赖库
+pip install grpcio
+pip install protobuf
+
+1.2 Linux系统安装
+sudo pip3 install grpcio
+sudo pip3 install protobuf
+
+
+2 配置服务
+
+2.1 打开目录下的cli\conf文件夹修改proxy.toml文件（可用记事本打开或Notepad++工具打开,根据资料和里面的备注修改）
+
+2.2 打开目录下的cli\conf文件夹修改log.toml文件,配置日志输出
+
+
+3 打开服务
+
+3.1 Windows系统下可双击目录下的cli\txtool.exe
+
+3.2 Linux系统打开命令控制台cd到目录下的cli文件夹打开txtool
+
+
+4 建立Python工程
+
+4.1 将目录下的entity_pb2.py、proxy_pb2.py、proxy_pb2_grpc.py、GrpcDemo.py,放入同一个工程文件夹
+
+4.2 打开GrpcDemo.py可简单演示接入过程
+
+
+5 接入之后请密切关注我方发布cli的版本
+
+
+6 RPC服务器IP和端口请联系我方客服获取
+

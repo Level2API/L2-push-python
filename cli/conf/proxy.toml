@@ -1,0 +1,26 @@
+#代理服务器监听地址
+Address = 'localhost:5000'
+
+#RPC接口行情服务器地址
+RpcServer = 'localhost:37011'
+
+#TCP接口行情服务器地址
+TcpServer = 'localhost:37001'
+
+#用户角色.用户ID
+User = 'X.XXXX'
+
+#用户密钥
+Passwd = 'XXXXXXXXXX'
+
+#行情推送消息缓存数，默认1000
+TxMsgCacheSize = 1000
+
+#数据目录，默认./data
+DataDir = './data'
+
+#是否将行情推送消息保存到文件
+EnableWriteTxMsgToFile = false
+
+#是否将行情推送消息转换为json
+EnableWriteTxMsgAsJson = false
