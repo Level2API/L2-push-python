@@ -50,6 +50,10 @@ Level2行情  QQ：2037696191  Skype：Level2.API
 | `txtool -h`      | 查看帮助                                            |
 | `txtool version` | 查看工具版本号                                      |
 | `txtool proxy`   | 启动本地代理服务器。默认命令，Windows可直接双击执行 |
+| `txtool subscribe get`   | 查看订阅信息 |
+| `txtool subscribe add -t value`   | 新增订阅主题, -t 主题名称,多个逗号分隔 |
+| `txtool subscribe del -t value`   | 删除订阅主题, -t 主题名称,多个逗号分隔 |
+| `txtool consume -c value -k value`   | 消费行情消息, -c 证券代码,-k 行情消息类型[1-逐笔成交，2-逐笔委托，4-委托队列，8-股票十档行情] (default: 0) |
 
 
 
