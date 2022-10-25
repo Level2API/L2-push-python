@@ -27,7 +27,7 @@ def add_subscription():
     # 2:市场代码标识(1为上海证券,2为深圳证券)
     # 000002:股票代码
     # 15:订阅全部标识(1为逐笔成交,2为逐笔委托,4为委托队列,8为股票十档行情,如果想全部订阅可直接填入15,原理是1+2+4+8,如果想订阅某几个行情将几个行情标识相加即可)
-    String.value = '2_000002_15'
+    String.value = '2_000001_15'
     # String.value = '2_000001_15,2_000002_5,2_000003_12,批量订阅'
     # rep返回code为1代表成功,其余状态码可参考接入文档
     Result = Stub.AddSubscription(String)
@@ -82,6 +82,8 @@ def stock_quote_record_stream():
 
 
 if __name__ == '__main__':
+    # 请先订阅再运行接收数据,如不订阅是接收不了数据
+    # add_subscription()
     # 可以使用多线程并发接收推送数据
     ThreadOne = threading.Thread(target=tick_record_stream)
     ThreadTwo = threading.Thread(target=order_record_stream)
