@@ -27,7 +27,9 @@ sudo pip3 install protobuf
 
 4.1 将目录下的entity_pb2.py、proxy_pb2.py、proxy_pb2_grpc.py、GrpcDemo.py,放入同一个工程文件夹
 
-4.2 打开GrpcDemo.py可简单演示接入过程
+4.2 打开GrpcDemo.py实例订阅方法，订阅所需要的股票(请注意：如不订阅实例接收数据方法是没有数据出来的)
+
+4.3 运行GrpcDemo.py里面接收数据的方法
 
 
 5 接入之后请密切关注我方发布cli的版本
