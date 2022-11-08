@@ -1,5 +1,10 @@
-Level2行情  QQ：2037696191,3173497610,775018516  Skype：Level2.API  
-联系邮箱：goLevel2API@gmail.com
+## Level2行情
+- QQ：2037696191
+- QQ：3173497610
+- QQ：775018516  
+- 稳定联系方式Skype：Level2.API  
+- 联系邮箱：goLevel2API@gmail.com
+#### 备注：如QQ联系不上，可联系稳定沟通方式skype或邮箱，感谢配合
 
 ## 订阅主题
 名称格式`证券交易所_证券代码_证券行情消息类型(bit或值)`，如：
