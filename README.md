@@ -1,4 +1,4 @@
-Level2行情  QQ：2037696191  Skype：Level2.API  
+Level2行情  QQ：2037696191,3173497610,775018516  Skype：Level2.API  
 联系邮箱：goLevel2API@gmail.com
 
 ## 订阅主题
