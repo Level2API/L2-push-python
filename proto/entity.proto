@@ -1,0 +1,121 @@
+syntax = "proto3";
+
+option go_package = "l2-push-go/rpc/entity";
+
+package sa.rpc.entity;
+
+import "google/protobuf/any.proto";
+
+message Void{}
+
+message Bool{
+  bool value = 1;
+}
+
+message String{
+  string value = 1;
+}
+
+message StringList{
+  repeated string values = 1;
+}
+
+message Bytes{
+  bytes value = 1;
+}
+
+message Int64{
+  int64 value = 1;
+}
+
+message Int64List{
+  repeated int64 values = 1;
+}
+
+message Int32{
+  int64 value = 1;
+}
+
+message Int32List{
+  repeated int32 values = 1;
+}
+
+
+//逐笔成交
+message TickRecord {
+  uint32 stock_exchange = 1;//证券市场，1-SH，2-SZ
+  string stock_code = 2;//证券代码
+  int64 created_at = 3;//成交日期时间戳(毫秒)
+  string code = 4;//成交编号
+  uint32 price = 5;//成交单价
+  uint64 volume = 6;//成交数量
+  uint64 amount = 7;//成交金额
+  uint32 tx_dir = 8;//交易方向：0-未知，1-买方成交，2-卖方成交
+  uint32 tx_kind = 9;//交易类型：0-成交，1-撤单
+  string buy_order_seq = 10;//买方委托序号
+  string sell_order_seq = 11;//卖方委托序号
+}
+
+//逐笔委托
+message OrderRecord {
+  uint32 stock_exchange = 1;//证券市场，1-SH，2-SZ
+  string stock_code = 2;//证券代码
+  int64 created_at = 3;//委托日期时间戳(毫秒)
+  string code = 4;//委托编号
+  uint32 price = 5;//委托单价
+  uint64 volume = 6;//委托数量
+  uint64 amount = 7;//成交金额
+  uint32 tx_dir = 8;//交易方向：0-未知，1-买入，2-卖出
+  uint32 tx_kind = 9;//交易类型：1-市价，2-限价，3-本方优先，10-撤单，11-暂不清楚(基金/债券有此值）
+}
+
+//委托队列
+message OrderQueueRecord {
+  uint32 stock_exchange = 1;//证券市场，1-SH，2-SZ
+  string stock_code = 2;//证券代码
+  int64 created_at = 3;//委托日期时间戳(毫秒)
+  uint32 bid1_price = 4;//买1价
+  uint32 bid1_quantity = 5;//买1笔数
+  uint32 ask1_price = 6;//卖1价
+  uint32 ask1_quantity = 7;//卖1笔数
+  repeated uint32 bid_volume_detail = 8;//委托买入数量明细
+  repeated uint32 ask_volume_detail = 9;//委托卖出数量明细
+}
+
+//股票十档行情
+message StockQuoteRecord{
+  uint32 stock_exchange = 1;//证券市场，见数据字典
+  string stock_code = 2;//证券代码
+  int64 created_at = 3;//快照日期时间戳(毫秒)
+  uint32 status = 4;//状态：0-开盘前，1-开盘集合竞价，2-集合竞价至连续竞价，3-连续竞价，4-中午休市，5-收盘集合竞价，6-闭市
+  uint32 prev_close_price = 5 ;//前收盘价
+  uint32 open_price = 6 ;//开盘价
+  uint32 latest_price = 7 ;//最新价
+  uint32 high_price = 8 ;//最高价
+  uint32 low_price = 9 ;//最低价
+  uint32 limit_up_price = 10 ;//涨停价
+  uint32 limit_down_price = 11 ;//跌停价
+  uint32 order_quantity = 12 ;//成交笔数
+  uint64 volume = 13 ;//成交数量
+  uint64 amount = 14 ;//成交金额
+  uint64 bid_volume = 15;//委托买入数量
+  uint32 bid_price = 16;//委托买入加权平均价
+  uint64 ask_volume = 17;//委托卖出数量
+  uint32 ask_price = 18;//委托卖出加权平均价
+  repeated uint32 bid_price_detail = 19;//委托买入价格明细(十档)
+  repeated uint32 bid_volume_detail = 20;//委托买入数量明细(十档)
+  repeated uint32 ask_price_detail = 21;//委托卖出价格明细(十档)
+  repeated uint32 ask_volume_detail = 22;//委托卖出数量明细(十档)
+}
+
+//订阅信息
+message Subscription{
+  int64 uid = 100;//用户ID
+  string topic = 1;//订阅主题，多个逗号分隔
+  string topic_pattern = 2;//订阅主题正则表达式，如果设置此属性，则topic设置无效
+  bool is_sub_all = 3;//是否订阅全部
+  int64 expired_at = 4;//订阅失效日期
+  uint32 max_subscribe_count = 5;//最大订阅数
+  uint32 used_subscribe_count = 6;//已有订阅数
+  int64 version = 7;//更新版本号
+}
