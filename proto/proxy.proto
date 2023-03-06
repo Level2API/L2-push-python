@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option go_package = "l2-push-go/rpc/proxy";
+
+package sa.rpc.cli.proxy;
+
+import "entity.proto";
+
+service Proxy{
+
+  //查询订阅
+  rpc GetSubscription(entity.Void)returns(SubscriptionRsp){}
+  //新增订阅
+  rpc AddSubscription(entity.String)returns(Rsp){}
+  //取消订阅
+  rpc DelSubscription(entity.String)returns(Rsp){}
+
+
+  //推送逐笔成交行情数据
+  rpc NewTickRecordStream(entity.Void)returns(stream entity.TickRecord){}
+  //推送逐笔委托行情数据
+  rpc NewOrderRecordStream(entity.Void)returns(stream entity.OrderRecord){}
+  //推送委托队列行情数据
+  rpc NewOrderQueueRecordStream(entity.Void)returns(stream entity.OrderQueueRecord){}
+  //推送股票十档行情行情数据
+  rpc NewStockQuoteRecordStream(entity.Void)returns(stream entity.StockQuoteRecord){}
+
+  //推送单支股票逐笔成交行情数据
+  rpc NewSoloTickRecordStream(entity.String)returns(stream entity.TickRecord){}
+  //推送单支股票逐笔委托行情数据
+  rpc NewSoloOrderRecordStream(entity.String)returns(stream entity.OrderRecord){}
+  //推送单支股票委托队列行情数据
+  rpc NewSoloOrderQueueRecordStream(entity.String)returns(stream entity.OrderQueueRecord){}
+  //推送单支股票股票十档行情行情数据
+  rpc NewSoloStockQuoteRecordStream(entity.String)returns(stream entity.StockQuoteRecord){}
+
+
+}
+
+message Rsp{
+  string id = 1;//消息ID
+  int32 code = 2;//响应码,见数据字典
+  string msg = 3;//响应消息，如错误消息
+}
+
+message SubscriptionRsp{
+  Rsp rsp = 1;//响应头
+  entity.Subscription data = 4;//消息数据
+}
